@@ -33,6 +33,5 @@
     "test",
     "**/*.test.ts", //忽略指定类型文件
     "babel.config.js",
-    "jest.config.js"
   ]
 }

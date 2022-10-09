@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createStorage = exports.useStorage = exports.StorageType = void 0;
 function _typeof(obj) {
     let _typeof;
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -288,20 +285,18 @@ var StorageClass = function (s) {
     return StorageClass;
 }();
 var StorageType;
-exports.StorageType = StorageType;
 (function (StorageType) {
     StorageType["Session"] = "session";
     StorageType["Local"] = "local";
     StorageType["WebSQL"] = "webSQL";
     StorageType["IndexDB"] = "indexDB";
-})(StorageType || (exports.StorageType = StorageType = {}));
+})(StorageType || (StorageType = {}));
 var webStorage = new StorageClass();
 var useStorage = function useStorage() {
     var namespace = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
     webStorage.config(namespace);
     return webStorage;
 };
-exports.useStorage = useStorage;
 const createStorage = (options) => {
     var _options$namespace;
     var _options = {
@@ -325,4 +320,4 @@ const createStorage = (options) => {
     webStorage = new StorageClass(storage);
     webStorage.config(_options.namespace);
 };
-exports.createStorage = createStorage;
+export { StorageType, useStorage, createStorage };

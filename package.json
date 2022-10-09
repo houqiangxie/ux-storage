@@ -2,7 +2,7 @@
   "name": "uxstorage",
   "version": "1.0.3",
   "description": "",
-  "main": "./build/index.js",
+  "main": "build/index.js",
    "scripts": {
      "dev": "tsc", 
      "build": "tsc"

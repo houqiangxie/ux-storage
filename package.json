@@ -1,13 +1,18 @@
 {
   "name": "uxstorage",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "build/index.js",
    "scripts": {
      "dev": "tsc", 
      "build": "tsc"
    },
-  "keywords": [],
+   "repository": {
+     "type": "git",
+     "url": "git@github.com/houqiangxie/uxstorage.git"
+   },
+   "files": ["build"],
+  "keywords": ["local","session"],
   "author": "",
   "license": "ISC",
   "dependencies": {

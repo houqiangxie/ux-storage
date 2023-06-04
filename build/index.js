@@ -1,3 +1,6 @@
+import mediator from "./mediator";
+const createMediator = () => mediator.install({});
+const sub = createMediator();
 function _typeof(obj) {
     let _typeof;
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -96,6 +99,7 @@ var StorageClass = function (s) {
                 }
                 for (var _key in removedKeys) {
                     this.storage.removeItem(removedKeys[_key]);
+                    sub.publish(key, undefined);
                 }
             }
         }, {
@@ -199,6 +203,7 @@ var StorageClass = function (s) {
         }, {
             key: "removeStorageSync",
             value: function removeStorageSync(key) {
+                sub.publish(key, undefined);
                 return this.storage.removeItem(this.getItemKey(key));
             }
         }, {
@@ -237,6 +242,7 @@ var StorageClass = function (s) {
                     expire: expire ? new Date().getTime() + expire : null
                 };
                 var stringifyValue = JSON.stringify(storeData);
+                sub.publish(key, data);
                 this.storage.setItem(this.getItemKey(key), stringifyValue);
             }
         }, {
@@ -320,4 +326,7 @@ const createStorage = (options) => {
     webStorage = new StorageClass(storage);
     webStorage.config(_options.namespace);
 };
-export { StorageType, useStorage, createStorage };
+var useSubStorage = (key, callback = () => { }) => {
+    sub.subscribe(key, (value) => callback(value));
+};
+export { StorageType, useStorage, createStorage, useSubStorage, };
